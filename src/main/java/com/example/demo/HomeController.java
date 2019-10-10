@@ -3,10 +3,7 @@ package com.example.demo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class HomeController {
@@ -23,7 +20,7 @@ public class HomeController {
         model.addAttribute("cars", carRepository.findAll());
         return "index";
     }
-
+    // form for category, form for car
 
     @GetMapping("/addCategory")
     public String addCategory(Model model) {
@@ -50,5 +47,32 @@ public class HomeController {
         return "redirect:/";
     }
 
-    // form for category, form for car, update edit delete for cars
+    // update detail delete for cars, detail only for category
+    @RequestMapping("/detail/{id}")
+    public String showCategory(@PathVariable("id") long id, Model model) {
+        // this is for an additional criteria
+        model.addAttribute("cars", carRepository.findAll());
+        model.addAttribute("category", categoryRepository.findById(id).get());
+        return "showcategory";
+    }
+
+    @RequestMapping("/cardetail/{id}")
+    public String showCar(@PathVariable("id") long id, Model model) {
+        model.addAttribute("car", carRepository.findById(id).get());
+        return "showcar";
+    }
+
+    @RequestMapping("/carupdate/{id}")
+    public String updateCar(@PathVariable("id") long id, Model model) {
+        model.addAttribute("car", carRepository.findById(id).get());
+        model.addAttribute("categories", categoryRepository.findAll());
+        return "carform";
+    }
+
+    @RequestMapping("/cardelete/{id}")
+    public String delCar(@PathVariable("id") long id) {
+        carRepository.deleteById(id);
+        // try return index if all fails
+        return "redirect:/";
+    }
 }
