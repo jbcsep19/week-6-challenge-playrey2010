@@ -6,7 +6,7 @@ import java.util.Set;
 @Entity
 public class Category {
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue (strategy = GenerationType.AUTO)
     private long categoryid;
     private String description;
     @OneToMany (mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.EAGER)

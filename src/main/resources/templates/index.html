@@ -21,20 +21,6 @@
     </div>
 </section>
 <section>
-    <h1>Category list</h1>
-    <div th:each="category : ${categories}">
-        <h2 th:text="${category.description}"></h2>
-        <ul>
-            <th:block th:each="car: ${category.cars}">
-                <li th:inline="text">Our [[${car.year}]] [[${car.model}]] is selling for just <strong>$[[${car.price}]]</strong>.</li>
-            </th:block>
-
-        </ul>
-
-    </div>
-
-</section>
-<section>
     <p class="row">
         <span th:each="category : ${categories}">
             <button th:href="@{/detail/{id}(id=${category.categoryid})}"><a class="catlink" th:href="@{/detail/{id}(id=${category.categoryid})}">[[${category.description}]]</a></button>

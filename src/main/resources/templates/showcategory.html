@@ -15,13 +15,20 @@
 <nav th:replace="base :: navbar">
 </nav>
 <section th:replace="index :: jumbotron"></section>
-<h2 th:text="${category.description}"></h2>
-<ul>
-    <th:block th:each="car: ${category.cars}">
-        <li th:inline="text">Our [[${car.year}]] [[${car.model}]] is selling for just <strong>$[[${car.price}]]</strong>.</li>
-    </th:block>
 
-</ul>
+<section>
+    <div class="row">
+        <div class="card" style="width: 18rem;" th:each="car : ${category.cars}">
+            <img src="https://res.cloudinary.com/playrey/image/upload/v1570753827/android-chrome-512x512_ufl89v.png"
+                 alt="logo" class="card-img-top">
+            <div class="card-body">
+                <h3 class="card-title" th:inline="text">[[${car.year}]] [[${car.manufacturer}]] [[${car.model}]]</h3>
+                <p class="card-text">It's on sale for just <strong>$[[${car.price}]]</strong>.</p>
+                <a th:href="@{/cardetail/{id}(id=${car.carid})}" class="btn btn-primary" style="display: block;">Car information</a>
+            </div>
+        </div>
+    </div>
+</section>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
