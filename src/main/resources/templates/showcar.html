@@ -7,9 +7,35 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lalezar&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/base.css}">
     <title>Car details</title>
 </head>
 <body>
+<nav th:replace="base :: navbar"></nav>
+<section th:replace="index :: jumbotron"></section>
+<br>
+<div class="row">
+    <div class="col-4"></div>
+    <div class="col-4">
+        <div class="card" style="width: 18rem; margin: auto">
+            <img src="https://res.cloudinary.com/playrey/image/upload/v1570753827/android-chrome-512x512_ufl89v.png"
+                 alt="logo" class="card-img-top">
+            <div class="card-body">
+                <h3 class="card-title" th:inline="text">[[${car.year}]] [[${car.manufacturer}]] [[${car.model}]]</h3>
+                <p class="card-text">Category: [[${car.category.description}]]</p>
+                <p class="card-text">Year: [[${car.year}]]</p>
+                <p class="card-text">MSRP:<strong>$[[${car.price}]]</strong>.</p>
+                <a th:href="@{/carupdate/{id}(id=${car.carid})}" class="btn btn-primary" style="display: block;">Update</a>
+                <a th:href="@{/cardelete/{id}(id=${car.carid})}" class="btn btn-primary" style="display: block;">Delete</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-4"></div>
+
+</div>
+
+
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

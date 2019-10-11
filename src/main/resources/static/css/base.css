@@ -177,3 +177,60 @@ span.number {
     margin-left: auto;
     margin-right: auto;
 }
+
+span {
+    margin: 3px 3px 10px 3px;
+}
+
+
+span button {
+    padding: 19px 39px 18px 39px;
+    color: #212529;
+    background-color: yellow;
+    font-size: 18px;
+    text-align: center;
+    font-style: normal;
+    border-radius: 5px;
+    width: 100%;
+    border: 3px solid #212529;
+    box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
+    /*margin-bottom: 10px;*/
+    margin: 3px 3px 10px 3px;
+}
+
+a.catlink {
+    color: #212529;
+    font-family: 'Lalezar', cursive;
+}
+
+/*styles for the car cards*/
+
+.card {
+    background-color: #212529;
+    color: yellow;
+    font-family: 'Lalezar', cursive;
+    border: 3px solid yellow;
+    border-radius: 5px;
+    margin: 3px 3px 10px 3px;
+}
+
+.card img {
+    max-width: 100%;
+}
+
+p.card-text {
+    font-size: 1.3rem;
+}
+
+.btn-primary {
+    color: #212529;
+    background-color: yellow;
+    border: 3px solid #212529;
+    border-radius: 5px;
+}
+
+.btn-primary:hover {
+    color: yellow;
+    background-color: #212529;
+    border-color: yellow;
+}

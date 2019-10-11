@@ -73,6 +73,6 @@ public class HomeController {
     public String delCar(@PathVariable("id") long id) {
         carRepository.deleteById(id);
         // try return index if all fails
-        return "redirect:/";
+        return "index";
     }
 }

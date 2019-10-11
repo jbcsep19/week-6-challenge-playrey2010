@@ -14,14 +14,10 @@
 <body>
 <nav th:replace="base :: navbar">
 </nav>
-<section class="jumbotron text-center">
+<section class="jumbotron text-center" th:fragment="jumbotron">
     <div class="container">
         <h1 class="jumbotron-heading">AWESOME AUTO</h1>
         <p class="lead text-muted">Find your next vehicle with us!</p>
-<!--        <p>-->
-<!--            <a href="#" class="btn btn-primary my-2">Main call to action</a>-->
-<!--            <a href="#" class="btn btn-secondary my-2">Secondary action</a>-->
-<!--        </p>-->
     </div>
 </section>
 <section>
@@ -41,13 +37,25 @@
 <section>
     <p class="row">
         <span th:each="category : ${categories}">
-            <span class="cat-btn"><a href="#">[[${category.description}]]</a></span>
+            <button th:href="@{/detail/{id}(id=${category.categoryid})}"><a class="catlink" th:href="@{/detail/{id}(id=${category.categoryid})}">[[${category.description}]]</a></button>
         </span>
     </p>
 
 </section>
 
-
+<section>
+    <div class="row">
+        <div class="card" style="width: 18rem;" th:each="car : ${cars}">
+            <img src="https://res.cloudinary.com/playrey/image/upload/v1570753827/android-chrome-512x512_ufl89v.png"
+                 alt="logo" class="card-img-top">
+            <div class="card-body">
+                <h3 class="card-title" th:inline="text">[[${car.year}]] [[${car.manufacturer}]] [[${car.model}]]</h3>
+                <p class="card-text">It's on sale for just <strong>$[[${car.price}]]</strong>.</p>
+                <a th:href="@{/cardetail/{id}(id=${car.carid})}" class="btn btn-primary" style="display: block;">Car information</a>
+            </div>
+        </div>
+    </div>
+</section>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

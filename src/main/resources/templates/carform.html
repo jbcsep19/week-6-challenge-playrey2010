@@ -13,7 +13,7 @@
 </head>
 <body>
 <nav th:replace="base :: navbar"></nav>
-<form th:action="@{processCar}" th:object="${car}" method="post">
+<form th:action="@{/processCar}" th:object="${car}" method="post">
     <input type="hidden" th:field="*{carid}">
     <h1>Car form</h1>
 

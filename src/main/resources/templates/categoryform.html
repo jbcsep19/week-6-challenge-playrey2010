@@ -15,7 +15,7 @@
 <nav th:replace="base :: navbar">
 </nav>
 
-<form th:action="@{processCategory}" th:object="${category}" method="post">
+<form th:action="@{/processCategory}" th:object="${category}" method="post">
     <input type="hidden" th:field="*{categoryid}">
     <h1>Add a Category</h1>
 
