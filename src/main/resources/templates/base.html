@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lalezar&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <title>Base</title>
+</head>
+<body>
+<nav th:fragment="navbar" class="navbar navbar-expand-lg bg-dark">
+    <img src="https://res.cloudinary.com/playrey/image/upload/v1570753827/android-chrome-512x512_ufl89v.png" alt="logo">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Our Cars <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/addCategory">Add a category</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/addCar">Add a car</a>
+            </li>
+            <li class="nav-item dropright">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    View Categories
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </li>
+
+        </ul>
+
+    </div>
+</nav>
+
+<form th:action="@{processCar}" th:object="${car}" method="post">
+    <input type="hidden" th:field="*{carid}">
+    <h1>Car form</h1>
+
+    <fieldset>
+        <legend><span class="number">1</span>Your car info</legend>
+        <label>Manufacturer:</label>
+        <input type="text" placeholder="Manufacturer..." th:field="*{manufacturer}">
+
+        <label>Model:</label>
+        <input type="text" placeholder="Model" th:field="*{model}">
+
+        <label>Year:</label>
+        <input type="text" placeholder="Year" th:field="*{year}">
+
+        <label>MSRP:</label>
+        <input type="radio" id="under_13" value="under_13" name="user_age"><label for="under_13" class="light">Under 13</label><br>
+        <input type="radio" id="over_13" value="over_13" name="user_age"><label for="over_13" class="light">13 or older</label>
+    </fieldset>
+
+    <fieldset>
+        <legend><span class="number">2</span>Your profile</legend>
+        <label for="bio">Biography:</label>
+        <textarea id="bio" name="user_bio"></textarea>
+    </fieldset>
+    <fieldset>
+        <label for="job">Job Role:</label>
+        <select id="job" name="user_job">
+            <optgroup label="Web">
+                <option value="frontend_developer">Front-End Developer</option>
+                <option value="php_developor">PHP Developer</option>
+                <option value="python_developer">Python Developer</option>
+                <option value="rails_developer"> Rails Developer</option>
+                <option value="web_designer">Web Designer</option>
+                <option value="WordPress_developer">WordPress Developer</option>
+            </optgroup>
+            <optgroup label="Mobile">
+                <option value="Android_developer">Androild Developer</option>
+                <option value="iOS_developer">iOS Developer</option>
+                <option value="mobile_designer">Mobile Designer</option>
+            </optgroup>
+            <optgroup label="Business">
+                <option value="business_owner">Business Owner</option>
+                <option value="freelancer">Freelancer</option>
+            </optgroup>
+            <optgroup label="Other">
+                <option value="secretary">Secretary</option>
+                <option value="maintenance">Maintenance</option>
+            </optgroup>
+        </select>
+
+        <label>Interests:</label>
+        <input type="checkbox" id="development" value="interest_development" name="user_interest"><label class="light" for="development">Development</label><br>
+        <input type="checkbox" id="design" value="interest_design" name="user_interest"><label class="light" for="design">Design</label><br>
+        <input type="checkbox" id="business" value="interest_business" name="user_interest"><label class="light" for="business">Business</label>
+
+    </fieldset>
+    <button type="submit">Sign Up</button>
+</form>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+</html>

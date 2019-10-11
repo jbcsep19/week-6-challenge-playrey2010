@@ -7,9 +7,44 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lalezar&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/base.css}">
     <title>Add a car</title>
 </head>
 <body>
+<nav th:replace="base :: navbar"></nav>
+<form th:action="@{processCar}" th:object="${car}" method="post">
+    <input type="hidden" th:field="*{carid}">
+    <h1>Car form</h1>
+
+    <fieldset>
+        <legend><span class="number">1</span>Your car info</legend>
+        <label>Manufacturer:</label>
+        <input type="text" placeholder="Manufacturer..." th:field="*{manufacturer}">
+
+        <label>Model:</label>
+        <input type="text" placeholder="Model" th:field="*{model}">
+
+        <label>Year:</label>
+        <input type="text" placeholder="Year" th:field="*{year}">
+
+        <label>MSRP:</label>
+        <input type="text" placeholder="MSRP" th:field="*{price}">
+    </fieldset>
+
+    <fieldset>
+        <legend><span class="number">2</span>Category Info</legend>
+<!--        <label for="job">Job Role:</label>-->
+        <select th:field="*{category}">
+
+            <div th:each="category : ${categories}">
+                <option th:value="${category.categoryid}" th:text="${category.description}"></option>
+            </div>
+
+        </select>
+    </fieldset>
+    <button type="submit">Add</button>
+</form>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
